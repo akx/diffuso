@@ -13,7 +13,7 @@ export function paintBlob(
   canvas: Canvas,
   cx: number,
   cy: number,
-  channel: number,
+  colors: number[],
   radius: number,
   intensity: number,
 ) {
@@ -25,8 +25,14 @@ export function paintBlob(
       const dy = y - cy;
       const d = dx * dx + dy * dy;
       if (d < radiusSquared) {
-        data[(y * width + x) * nChannels + channel] +=
-          intensity * (1 - d / radiusSquared);
+        for (
+          let channel = 0;
+          channel < Math.min(colors.length, nChannels);
+          channel++
+        ) {
+          data[(y * width + x) * nChannels + channel] +=
+            colors[channel] * intensity * (1 - d / radiusSquared);
+        }
       }
     }
   }

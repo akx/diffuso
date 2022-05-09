@@ -2,6 +2,16 @@ export function rand(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
+export function randMinMaxObj({
+  minValue,
+  maxValue,
+}: {
+  minValue: number;
+  maxValue: number;
+}) {
+  return rand(minValue, maxValue);
+}
+
 export function fadeArray(data: Float32Array, min: number, max: number) {
   if (min >= 1) {
     return;
