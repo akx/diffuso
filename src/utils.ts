@@ -25,7 +25,7 @@ export function clampValue(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
 }
 
-function lerp(a: number, b: number, alpha: number) {
+export function lerp(a: number, b: number, alpha: number) {
   return a + (b - a) * alpha;
 }
 
